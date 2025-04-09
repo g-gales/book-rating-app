@@ -1,0 +1,14 @@
+.book-tile {
+  border-radius: 10px;
+  border: solid 3px #55634e;
+  max-width: fit-content;
+  padding: 1rem;
+  background-color: #cacaca;
+  transition: all 0.3s ease;
+
+  &:hover {
+    cursor: pointer;
+    border: solid 4px #55634e;
+    box-shadow: 5px 5px 5px #7c7c7ccb;
+  }
+}
