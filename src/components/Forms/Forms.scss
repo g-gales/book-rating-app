@@ -110,13 +110,6 @@ form {
 
   button.add-btn-container {
     @include button-style(#089927, #276435, #ffffff, #fff);
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-
-    .icon {
-      font-size: 1.3rem;
-    }
   }
 
   @media only screen and (min-width: 900px) {

@@ -14,7 +14,7 @@ export async function save(data) {
       author: data.author,
       description: data.description,
       genre: data.genre,
-      rating: null,
+      rating: 0,
       read: data.read,
       review: "",
     });

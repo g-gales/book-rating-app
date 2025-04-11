@@ -5,6 +5,14 @@ import React, { useState } from "react";
 
 function Books({ books }) {
   const [search, setSearch] = useState("");
+
+  const filteredBooks = books.filter((book) => {
+    const query = search.toLowerCase();
+    return (
+      book.title.toLowerCase().includes(query) ||
+      book.author.toLowerCase().includes(query)
+    );
+  });
   return (
     <div className="library-container">
       <div className="books-title-container">
@@ -19,9 +27,11 @@ function Books({ books }) {
           onChange={(event) => setSearch(event.target.value)}></input>
       </div>
       <div className="books-container">
-        {books.map((book, index) => (
-          <BookTile key={index} book={book} />
-        ))}
+        {filteredBooks.length > 0 ? (
+          filteredBooks.map((book) => <BookTile key={book.id} book={book} />)
+        ) : (
+          <p>No books found.</p>
+        )}
       </div>
     </div>
   );

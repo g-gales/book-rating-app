@@ -15,7 +15,7 @@ function Messages({ message }) {
         setFullMessage("Error Saving New Book!\n\nPlease fill out all fields.");
         break;
       case "rate-success":
-        setFullMessage("Book Successfully Review!");
+        setFullMessage("Book Successfully Reviewed & Rated!");
         break;
       case "rate-saving":
         setFullMessage("Saving New Review...");

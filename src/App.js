@@ -39,14 +39,12 @@ function App() {
       <Header />
       <main className="main-container">
         <Routes>
-          <Route path="/" element={<Books books={books} />}>
-            <Route path="book/:id" element={<BookDetails />} />
-          </Route>
-
+          <Route path="/" element={<Books books={books} />} />
+          <Route path="book/:id" element={<BookDetails />} />
           <Route path="/add" element={<AddBook onAddBook={handleAddBook} />} />
           <Route
-            path="/rate"
-            element={<RateBook onRateBook={handleRateBook} books={books} />}
+            path="/rate/:id?"
+            element={<RateBook onRateBook={handleRateBook} />}
           />
         </Routes>
       </main>

@@ -74,7 +74,7 @@ function AddBook({ onAddBook }) {
           Description
           <textarea
             id="form-desc"
-            maxLength={500}
+            maxLength={1000}
             value={description}
             rows={3}
             onChange={(event) => setDescription(event.target.value)}></textarea>
@@ -85,7 +85,7 @@ function AddBook({ onAddBook }) {
               <input
                 type="checkbox"
                 checked={status}
-                onClick={() => setStatus(!status)}
+                onChange={() => setStatus(!status)}
               />
               <span></span>
             </span>

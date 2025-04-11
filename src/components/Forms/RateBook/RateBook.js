@@ -1,26 +1,36 @@
+import { useParams } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 
 import Messages from "../Messages/Messages";
+import * as database from "../../../database";
 import "../Forms.scss";
 
-function RateBook({ onRateBook, books }) {
+function RateBook({ onRateBook }) {
   const [review, setReview] = useState("");
-  const [rating, setRating] = useState(null);
+  const [rating, setRating] = useState(0);
   const [status, setStatus] = useState(false);
   const [message, setMessage] = useState("");
   const [currentBookTitle, setCurrentBookTitle] = useState("");
   const [currentBookId, setCurrentBookId] = useState("");
 
+  const books = database.useBooks();
+  const { id } = useParams();
+
   // Ensures when a new book is selected, the book useStates are updated
   useEffect(() => {
-    if (currentBookId) {
-      const selectedBook = books.find((b) => b.id === currentBookId);
-
-      setReview(selectedBook.review);
-      setRating(parseInt(selectedBook.rating));
-      setStatus(selectedBook.read);
+    if (id && books.length > 0) {
+      const selectedBook = books.find((b) => b.id === id);
+      if (selectedBook) {
+        setCurrentBookId(selectedBook.id);
+        setCurrentBookTitle(selectedBook.title);
+        setReview(selectedBook.review);
+        if (selectedBook.rating !== 0) {
+          setRating(parseInt(selectedBook.rating));
+        }
+        setStatus(selectedBook.read);
+      }
     }
-  }, [currentBookId, books]);
+  }, [id, books]);
 
   const handleBookChange = (title) => {
     const selectedBook = books.find((b) => b.title === title);
@@ -32,7 +42,7 @@ function RateBook({ onRateBook, books }) {
     event.preventDefault();
     setMessage("");
 
-    if (review === "" || rating === null) {
+    if (review === "" || rating === 0) {
       setMessage("rate-error");
     } else if (currentBookId === "") {
       setMessage("rate-error-book");
@@ -43,7 +53,7 @@ function RateBook({ onRateBook, books }) {
 
       // Reset the form state.
       setMessage("rate-success");
-      setRating(null);
+      setRating("");
       setReview("");
       setStatus(false);
     }
@@ -60,19 +70,21 @@ function RateBook({ onRateBook, books }) {
 
         {message !== "" && <Messages message={message} />}
 
-        <label>
-          <select
-            id="form-sel"
-            value={currentBookTitle}
-            onChange={(event) => handleBookChange(event.target.value)}>
-            <option value="">-- Select a Book --</option>
-            {books.map((book, index) => (
-              <option key={index} value={book.title}>
-                {book.title}
-              </option>
-            ))}
-          </select>
-        </label>
+        {!id && (
+          <label>
+            <select
+              id="form-sel"
+              value={currentBookTitle}
+              onChange={(event) => handleBookChange(event.target.value)}>
+              <option value="">-- Select a Book --</option>
+              {books.map((book, index) => (
+                <option key={index} value={book.title}>
+                  {book.title}
+                </option>
+              ))}
+            </select>
+          </label>
+        )}
 
         <div className="read-rating">
           <div className="form-check">
@@ -81,7 +93,7 @@ function RateBook({ onRateBook, books }) {
                 <input
                   type="checkbox"
                   checked={status}
-                  onClick={() => setStatus(!status)}
+                  onChange={() => setStatus(!status)}
                 />
                 <span></span>
               </span>
