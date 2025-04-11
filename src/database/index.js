@@ -1,4 +1,3 @@
 export { db } from "./config";
-export { load } from "./read";
+export { load, useBooks } from "./read";
 export { save, update, remove } from "./write";
-export { useBooks } from "./useBooks";

@@ -1,0 +1,52 @@
+// Mixin for common button styles
+@import "./variables.scss";
+
+@mixin button-style($bg-color, $hover-bg-color, $color, $hover-color) {
+  padding: $btn-padding;
+  border: none;
+  border-radius: 4px;
+  background-color: $bg-color;
+  color: $color;
+  cursor: pointer;
+  font-size: $btn-font-size;
+  transition: background-color 0.3s ease-in, color 0.3s ease-in;
+
+  &:hover {
+    color: $hover-color;
+    background-color: $hover-bg-color;
+  }
+}
+
+// Mixin for input
+@mixin input-style {
+  display: block;
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+// Mixin for horizontal rule styles
+@mixin hr-style {
+  border: none;
+  border-top: 1px $hr-border-style #ccc;
+  margin: $hr-margin;
+}
+
+@mixin h2-style {
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+// Mixin for form messages
+@mixin form-message($msg-color) {
+  border: 2px solid $msg-color;
+  border-left: 6px solid $msg-color;
+  margin-bottom: 15px;
+  padding: 15px;
+  font-weight: bold;
+  color: $msg-color;
+}

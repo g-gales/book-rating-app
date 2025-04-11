@@ -1,0 +1,13 @@
+@import "/src/styles/mixins";
+
+.form-container {
+  padding: 2rem 0;
+}
+form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 2px solid #55634e;
+  border-radius: 8px;
+  background-color: #f6f6f6;
+}

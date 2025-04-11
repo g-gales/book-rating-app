@@ -10,7 +10,13 @@ import { db } from "./config";
 export async function save(data) {
   try {
     const docRef = await addDoc(collection(db, "books"), {
-      // add fields
+      title: data.title,
+      author: data.author,
+      description: data.description,
+      genre: data.genre,
+      rating: null,
+      read: data.read,
+      review: "",
     });
     return docRef.id;
   } catch (error) {

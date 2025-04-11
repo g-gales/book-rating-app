@@ -6,7 +6,7 @@ import React, { useState } from "react";
 function Books({ books }) {
   const [search, setSearch] = useState("");
   return (
-    <>
+    <div className="library-container">
       <div className="books-title-container">
         <h2 className="books-title">In the Library</h2>
         <input
@@ -23,7 +23,7 @@ function Books({ books }) {
           <BookTile key={index} book={book} />
         ))}
       </div>
-    </>
+    </div>
   );
 }
 

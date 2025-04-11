@@ -7,7 +7,7 @@ function BookTile({ book }) {
   return (
     <div onClick={() => navigate(`/book/${book.id}`)} className="book-tile">
       <h3 className="book-title">{book.title}</h3>
-      <p className="book-author">{book.author}</p>
+      <p className="book-author">By: {book.author}</p>
       <p className="book-read">{book.read ? "READ" : "TO BE READ"}</p>
       {/* stars */}
       <p className="book-description">{book.description}</p>

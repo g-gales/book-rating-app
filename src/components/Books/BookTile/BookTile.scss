@@ -1,14 +1,33 @@
 .book-tile {
+  flex: 0 0 100%;
+  box-sizing: border-box;
   border-radius: 10px;
   border: solid 3px #55634e;
-  max-width: fit-content;
+  max-width: 100%;
   padding: 1rem;
-  background-color: #cacaca;
+  background-color: #d6d6d6;
   transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 300px;
 
   &:hover {
     cursor: pointer;
     border: solid 4px #55634e;
     box-shadow: 5px 5px 5px #7c7c7ccb;
+    transform: scale(1.02);
+  }
+  @media only screen and (min-width: 450px) {
+    max-width: 400px;
+  }
+  @media only screen and (min-width: 600px) {
+    flex: 0 0 48%;
+    max-width: 48%;
+  }
+
+  @media only screen and (min-width: 900px) {
+    flex: 0 0 31%;
+    max-width: 31%;
   }
 }

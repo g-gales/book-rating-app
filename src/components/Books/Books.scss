@@ -1,29 +1,53 @@
-.books-title-container {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+@import "/src/styles/mixins";
 
-  .books-title {
-    font-size: 1.7rem;
-  }
-
-  .search {
-    width: 7rem;
-    border-radius: 5px;
-    border: solid 2px #55634e;
-    padding: 0.5rem;
-  }
-
-  @media only screen and (min-width: 650px) {
-    .search {
-      width: 15rem;
-    }
-  }
-}
-
-.books-container {
+.library-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding-bottom: 1rem;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 90%;
+
+  .books-title-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1rem;
+
+    .books-title {
+      @include h2-style;
+    }
+
+    .search {
+      width: 7rem;
+      border-radius: 5px;
+      border: solid 2px #55634e;
+      padding: 0.5rem;
+      transition: all 0.3s ease;
+
+      &:hover {
+        border: solid 2.5px #55634e;
+      }
+    }
+    @media only screen and (min-width: 650px) {
+      padding: 1rem 1rem 0;
+
+      .search {
+        width: 15rem;
+      }
+    }
+  }
+
+  .books-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 1rem 0;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  @media only screen and (min-width: 1100px) {
+    max-width: 990px;
+  }
 }
