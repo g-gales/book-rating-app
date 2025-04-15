@@ -2,7 +2,6 @@ import NavBar from "./NavBar/NavBar";
 
 import "./Header.scss";
 import { RiBookShelfLine } from "react-icons/ri";
-// import MainMenu from "../MainMenu/MainMenu";
 
 export default function Header() {
   return (

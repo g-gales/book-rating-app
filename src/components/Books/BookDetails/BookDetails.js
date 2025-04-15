@@ -49,6 +49,17 @@ function BookDetails() {
 
   if (!book) return <p className="loading">Loading book details...</p>;
 
+  const handleRemove = () => {
+    if (
+      window.confirm(
+        "Deleting a book is a permenant action. Are you sure you want to continue?"
+      )
+    ) {
+      database.remove(book.id);
+      navigate("/");
+    }
+  };
+
   return (
     <div className="book-details-container">
       <div className="book-details">
@@ -67,7 +78,7 @@ function BookDetails() {
           <BookRating rating={book.rating} />
         ) : (
           <button
-            className="btn-container"
+            className="rate-btn"
             onClick={(e) => {
               e.stopPropagation();
               navigate(`/rate/${book.id}`);
@@ -83,6 +94,21 @@ function BookDetails() {
             <p>{book.review}</p>
           </>
         )}
+        <div className="e-r-btn-container">
+          {isRating && (
+            <button
+              className="edit-btn"
+              onClick={(e) => {
+                e.stopPropagation();
+                navigate(`/rate/${book.id}`);
+              }}>
+              Edit Review
+            </button>
+          )}
+          <button className="delete-btn" onClick={handleRemove}>
+            Remove Book
+          </button>
+        </div>
       </div>
     </div>
   );

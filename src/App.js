@@ -5,6 +5,7 @@ import Books from "./components/Books/Books";
 import AddBook from "./components/Forms/AddBook/AddBook";
 import RateBook from "./components/Forms/RateBook/RateBook";
 import BookDetails from "./components/Books/BookDetails/BookDetails";
+import NotFound from "./components/NotFound/NotFound";
 
 import * as database from "./database";
 
@@ -46,6 +47,7 @@ function App() {
             path="/rate/:id?"
             element={<RateBook onRateBook={handleRateBook} />}
           />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
       <Footer />

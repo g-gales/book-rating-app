@@ -108,6 +108,10 @@ form {
     }
   }
 
+  button.return-btn {
+    @include return-btn(#f6f6f6);
+  }
+
   button.add-btn-container {
     @include button-style(#089927, #276435, #ffffff, #fff);
   }

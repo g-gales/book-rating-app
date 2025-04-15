@@ -60,7 +60,21 @@ p.loading {
     color: #333;
   }
 
-  > button.btn-container {
+  > button.rate-btn {
     @include button-style(#55634e, #283f28, #ffffff, #fff);
+  }
+
+  > .e-r-btn-container {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+
+    > button.edit-btn {
+      @include button-style(#808065, #5c5f37, #ffffff, #fff);
+    }
+
+    > button.delete-btn {
+      @include button-style(#b45c5c, #742020, #ffffff, #fff);
+    }
   }
 }

@@ -1,4 +1,6 @@
-import { useParams } from "react-router-dom";
+import { FaArrowLeft } from "react-icons/fa";
+
+import { useParams, useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 
 import Messages from "../Messages/Messages";
@@ -15,6 +17,7 @@ function RateBook({ onRateBook }) {
 
   const books = database.useBooks();
   const { id } = useParams();
+  const navigate = useNavigate();
 
   // Ensures when a new book is selected, the book useStates are updated
   useEffect(() => {
@@ -62,6 +65,14 @@ function RateBook({ onRateBook }) {
   return (
     <div className="form-container">
       <form onSubmit={handleSubmit}>
+        {id && (
+          <button
+            onClick={() => navigate(`/book/${id}`)}
+            className="return-btn">
+            <FaArrowLeft className="icon" /> Return to Book Details
+          </button>
+        )}
+
         {currentBookTitle === "" ? (
           <h2>Pick a Book to Rate</h2>
         ) : (
