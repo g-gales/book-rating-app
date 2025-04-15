@@ -26,19 +26,22 @@ function RateBook({ onRateBook }) {
       if (selectedBook) {
         setCurrentBookId(selectedBook.id);
         setCurrentBookTitle(selectedBook.title);
-        setReview(selectedBook.review);
-        if (selectedBook.rating !== 0) {
-          setRating(parseInt(selectedBook.rating));
-        }
-        setStatus(selectedBook.read);
+        setReview(selectedBook.review || "");
+        setRating(selectedBook.rating ? parseInt(selectedBook.rating) : 0);
+        setStatus(!!selectedBook.read);
       }
     }
   }, [id, books]);
 
   const handleBookChange = (title) => {
     const selectedBook = books.find((b) => b.title === title);
-    setCurrentBookId(selectedBook.id);
-    setCurrentBookTitle(title);
+    if (selectedBook) {
+      setCurrentBookId(selectedBook.id);
+      setCurrentBookTitle(selectedBook.title);
+      setReview(selectedBook.review || "");
+      setRating(selectedBook.rating ? parseInt(selectedBook.rating) : 0);
+      setStatus(!!selectedBook.read);
+    }
   };
 
   const handleSubmit = async (event) => {
@@ -56,7 +59,7 @@ function RateBook({ onRateBook }) {
 
       // Reset the form state.
       setMessage("rate-success");
-      setRating("");
+      setRating(0);
       setReview("");
       setStatus(false);
     }
